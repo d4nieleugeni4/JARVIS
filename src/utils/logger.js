@@ -34,6 +34,9 @@ exports.bannerLog = () => {
   const green = '\x1b[38;2;120;255;150m';
   const yellow = '\x1b[38;2;255;255;100m';
   const purple = '\x1b[38;2;180;100;255m';
+  const gold = '\x1b[38;2;212;175;55m';
+  const silver = '\x1b[38;2;192;192;192m';
+  const darkBlue = '\x1b[38;2;0;50;150m';
   const reset = '\x1b[0m';
 
   // Função para tempo de atividade
