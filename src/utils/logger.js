@@ -51,7 +51,7 @@ exports.bannerLog = () => {
   console.log(`${red}│ ░░█░░█░░█░█▄▄▀░█░░░█░█░█▄░░░░░█▄▄▀░█░░█░░░█░░░ │${reset}`);
   console.log(`${red}│ █░█░░█▀▀█░█▀▄░░░█░█░░█░░▀█░░░░█▀▀▄░█░░█░░░█░░░ │${reset}`);
   console.log(`${red}│ ▀█▀░░█░░█░█░░█░░░█░░░█░▄▄█░░░░█▄▄▀░█▄▄█░░░█░░░ │${reset}`);
-  console.log(`${red}│ ${blue}BY DN-24981321901                ${red} │${reset}`);
+  console.log(`${red}│ ${blue}BY DN-24981321901                 ${red}│${reset}`);
   console.log(`${red}╰────────────────────────────────────────────────╯${reset}`);
   
   // Informações com bordas alinhadas
