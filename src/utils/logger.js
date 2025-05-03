@@ -50,6 +50,7 @@ exports.bannerLog = () => {
   console.log(`${red}│ ░░█░░█░░█░█▄▄▀░█░░░█░█░█▄░░░░░█▄▄▀░█░░█░░░█░░░│${reset}`);
   console.log(`${red}│ █░█░░█▀▀█░█▀▄░░░█░█░░█░░▀█░░░░█▀▀▄░█░░█░░░█░░░│${reset}`);
   console.log(`${red}│ ▀█▀░░█░░█░█░░█░░░█░░░█░▄▄█░░░░█▄▄▀░█▄▄█░░░█░░░│${reset}`);
+  console.log(`${red}│${reset}`);                            console.log(`${red}│${reset}`);
   console.log(`${red}╰───────────────────────────────────────────────╯${reset}`);
   
   // Informações com bordas alinhadas
