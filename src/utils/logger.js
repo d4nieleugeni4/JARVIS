@@ -55,11 +55,11 @@ exports.bannerLog = () => {
   console.log(`${red}╰────────────────────────────────────────────────╯${reset}`);
   
   // Informações com bordas alinhadas
-  console.log(`${blue}┌───────────────────────────────────────────────┐${reset}`);
-  console.log(`${blue}│ ${yellow}📅 ${new Date().toLocaleDateString()} ${blue}         │ ${yellow}⏱️ ${new Date().toLocaleTimeString()} ${blue}         │${reset}`);
-  console.log(`${blue}│ ${purple}🔄 Uptime: ${green}${getUptime()} ${blue}     │ ${yellow}📞 ${green}55 24981321901 ${blue}    │${reset}`);
-  console.log(`${blue}│ ${blue}💻 by: ${green}dn ${blue}${' '.repeat(31)}     │${reset}`);
-  console.log(`${blue}└───────────────────────────────────────────────┘${reset}`);
+  console.log(`${blue}┌────────────────────────────────────────────────┐${reset}`);
+  console.log(`${blue}│ ${yellow}📅 ${new Date().toLocaleDateString()} ${blue}         │ ${yellow}⏱️ ${new Date().toLocaleTimeString()} ${blue}          │${reset}`);
+  console.log(`${blue}│ ${purple}🔄 Uptime: ${green}${getUptime()} ${blue}     │ ${yellow}📞 ${green}55 24981321901 ${blue}     │${reset}`);
+  console.log(`${blue}│ ${blue}💻 by: ${green}dn ${blue}${' '.repeat(31)}      │${reset}`);
+  console.log(`${blue}└────────────────────────────────────────────────┘${reset}`);
 };
 
  
