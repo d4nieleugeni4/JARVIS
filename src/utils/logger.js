@@ -1,109 +1,108 @@
 /**
- * Logs
+ * Logs - Premium Styled Banner
  */
 const { version } = require("../../package.json");
 const readline = require('readline');
 const os = require('os');
+const gradient = require('gradient-string');
 
-// Configuração de cores
+// Configuração de cores premium
 const colors = {
   reset: '\x1b[0m',
-  gold: '\x1b[38;2;212;175;55m',
-  silver: '\x1b[38;2;192;192;192m',
-  darkBlue: '\x1b[38;2;0;50;150m',
-  blue: '\x1b[38;2;100;150;255m',
-  lightBlue: '\x1b[38;2;150;200;255m'
+  gold: gradient('#FFD700', '#D4AF37'),
+  silver: gradient('#C0C0C0', '#A8A8A8'),
+  darkBlue: gradient('#00008B', '#1E90FF'),
+  cyberBlue: gradient('#00FFFF', '#0080FF'),
+  matrixGreen: gradient('#00FF00', '#00CC00'),
+  royalPurple: gradient('#9370DB', '#8A2BE2'),
+  fireRed: gradient('#FF4500', '#FF0000')
 };
 
-// Limpar terminal
+// Limpar terminal de forma mais eficiente
 function clearTerminal() {
-  const blank = '\n'.repeat(process.stdout.rows);
-  console.log(blank);
-  readline.cursorTo(process.stdout, 0, 0);
-  readline.clearScreenDown(process.stdout);
+  process.stdout.write('\x1Bc');
 }
 
 // Configurar limpeza automática a cada 10 minutos
 let cleanupInterval;
 function setupAutoClean() {
-  if (cleanupInterval) clearInterval(cleanupInterval);
   cleanupInterval = setInterval(() => {
     clearTerminal();
     exports.bannerLog();
-  }, 10 * 60 * 1000); // 10 minutos em milissegundos
+  }, 10 * 60 * 1000);
 }
 
-// Função para formatar data com zeros à esquerda
-function formatDate(date) {
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = date.getFullYear();
-  return `${day},${month},${year}`;
-}
+// Formatadores premium
+const formatDate = (date) => {
+  return [
+    date.getDate().toString().padStart(2, '0'),
+    (date.getMonth() + 1).toString().padStart(2, '0'),
+    date.getFullYear()
+  ].join(',');
+};
 
-// Função para tempo de atividade
 const getUptime = () => {
   const sec = Math.floor(process.uptime());
-  const hours = Math.floor(sec / 3600);
-  const mins = Math.floor((sec % 3600) / 60);
-  return `${String(hours).padStart(2, '0')}h ${String(mins).padStart(2, '0')}m`;
+  const hours = Math.floor(sec / 3600).toString().padStart(2, '0');
+  const mins = Math.floor((sec % 3600) / 60).toString().padStart(2, '0');
+  return `${hours}h ${mins}m`;
 };
 
-exports.sayLog = (message) => {
-  console.log("\x1b[36m[JARVIS | TALK]\x1b[0m", message);
+const getMemoryUsage = () => {
+  const total = (os.totalmem() / (1024 ** 3)).toFixed(2);
+  const free = (os.freemem() / (1024 ** 3)).toFixed(2);
+  return { total, free };
 };
 
-exports.inputLog = (message) => {
-  console.log("\x1b[30m[JARVIS | INPUT]\x1b[0m", message);
-};
-
-exports.infoLog = (message) => {
-  console.log("\x1b[34m[JARVIS | INFO]\x1b[0m", message);
-};
-
-exports.successLog = (message) => {
-  console.log("\x1b[32m[JARVIS | SUCCESS]\x1b[0m", message);
-};
-
-exports.errorLog = (message) => {
-  console.log("\x1b[31m[JARVIS | ERROR]\x1b[0m", message);
-};
-
-exports.warningLog = (message) => {
-  console.log("\x1b[33m[JARVIS | WARNING]\x1b[0m", message);
+// Função para criar bordas decoradas
+const createBorder = (length, style = 'double') => {
+  const chars = {
+    double: { left: '╠', right: '╣', line: '═' },
+    single: { left: '╟', right: '╢', line: '─' },
+    star: { left: '✦', right: '✦', line: '✧' }
+  };
+  const { left, right, line } = chars[style] || chars.double;
+  return left + line.repeat(length - 2) + right;
 };
 
 exports.bannerLog = () => {
-  // Limpar terminal antes de mostrar o banner
   clearTerminal();
-  
-  // Configurar limpeza automática
   setupAutoClean();
 
-  // Obter informações do sistema
   const now = new Date();
-  const formattedDate = formatDate(now);
-  const time = now.toLocaleTimeString();
-  const uptime = getUptime();
-  const totalMem = (os.totalmem() / (1024 * 1024 * 1024)).toFixed(2);
-  const freeMem = (os.freemem() / (1024 * 1024 * 1024)).toFixed(2);
+  const { total, free } = getMemoryUsage();
+  const cpuCount = os.cpus().length;
 
-  // Banner com cores prata, dourado e azul escuro
-  console.log(`${colors.gold}╭────────────────────────────────────────────────────────╮${colors.reset}`);
-  console.log(`${colors.gold}│                                                        │${colors.reset}`);
-  console.log(`${colors.gold}│${colors.silver} ░▀█▀░█▀▀█░█▀▀▄░█░░░█░▀░█▀▀░░░░█▀▀▄░█▀▀█░▀▀█▀▀░ ${colors.gold}│${colors.reset}`);
-  console.log(`${colors.gold}│${colors.silver} ░░█░░█░░█░█▄▄▀░█░░░█░█░█▄░░░░░█▄▄▀░█░░█░░░█░░░ ${colors.gold}│${colors.reset}`);
-  console.log(`${colors.gold}│${colors.silver} █░█░░█▀▀█░█▀▄░░░█░█░░█░░▀█░░░░█▀▀▄░█░░█░░░█░░░ ${colors.gold}│${colors.reset}`);
-  console.log(`${colors.gold}│${colors.silver} ▀█▀░░█░░█░█░░█░░░█░░░█░▄▄█░░░░█▄▄▀░█▄▄█░░░█░░░ ${colors.gold}│${colors.reset}`);
-  console.log(`${colors.gold}│                                                        │${colors.reset}`);
-  console.log(`${colors.gold}╰────────────────────────────────────────────────────────╯${colors.reset}`);
+  // Banner com design premium
+  console.log(colors.darkBlue('╔══════════════════════════════════════════════════════════╗'));
+  console.log(colors.darkBlue('║') + colors.gold('                  █▀▀ █░█ █▀▀ █▀█ █ █▀▀ █▀▀                  ') + colors.darkBlue('║'));
+  console.log(colors.darkBlue('║') + colors.silver('                  █▄▄ █▀█ ██▄ █▀▄ █ █▄█ ██▄                  ') + colors.darkBlue('║'));
+  console.log(colors.darkBlue('╠══════════════════════════════════════════════════════════╣'));
   
-  // Informações do sistema
-  console.log(`${colors.darkBlue}┌────────────────────────────────────────────────────────┐${colors.reset}`);
-  console.log(`${colors.darkBlue}│ ${colors.silver}📅 Data: ${colors.lightBlue}${formattedDate} ${colors.darkBlue}│ ${colors.silver}⏱️ Hora: ${colors.lightBlue}${time} ${colors.darkBlue}│${colors.reset}`);
-  console.log(`${colors.darkBlue}│ ${colors.silver}🔄 Uptime: ${colors.lightBlue}${uptime} ${colors.darkBlue}│ ${colors.silver}📞 Contato: ${colors.lightBlue}55 24981321901 ${colors.darkBlue}│${colors.reset}`);
-  console.log(`${colors.darkBlue}│ ${colors.silver}💻 Desenvolvedor: ${colors.lightBlue}dn ${colors.darkBlue}${' '.repeat(30)}│${colors.reset}`);
-  console.log(`${colors.darkBlue}│ ${colors.silver}🧠 Memória: ${colors.lightBlue}${freeMem}GB/${totalMem}GB ${colors.darkBlue}│ ${colors.silver}🚀 Versão: ${colors.lightBlue}v${version} ${colors.darkBlue}│${colors.reset}`);
-  console.log(`${colors.darkBlue}└────────────────────────────────────────────────────────┘${colors.reset}`);
+  // Informações do sistema com gradientes
+  console.log(colors.darkBlue('║ ') + colors.cyberBlue(`📅 ${formatDate(now)}`) + 
+            colors.darkBlue(' ┊ ') + colors.matrixGreen(`⏱️ ${now.toLocaleTimeString()}`) + 
+            colors.darkBlue(' ┊ ') + colors.royalPurple(`🔄 ${getUptime()}`) + 
+            colors.darkBlue(' ║'));
+
+  console.log(colors.darkBlue('║ ') + colors.fireRed(`💻 ${os.type()} ${os.release()}`) + 
+            colors.darkBlue(' ┊ ') + colors.gold(`🧠 ${free}GB/${total}GB`) + 
+            colors.darkBlue(' ┊ ') + colors.silver(`⚡ ${cpuCount} Cores`) + 
+            colors.darkBlue(' ║'));
+
+  console.log(colors.darkBlue('║ ') + colors.royalPurple(`📞 +55 24 98132-1901`) + 
+            colors.darkBlue(' ┊ ') + colors.cyberBlue(`👨‍💻 dn`) + 
+            colors.darkBlue(' ┊ ') + colors.matrixGreen(`🚀 v${version}`) + 
+            colors.darkBlue(' ║'));
+
+  console.log(colors.darkBlue('╚══════════════════════════════════════════════════════════╝'));
+  console.log(colors.silver(createBorder(58, 'star')));
 };
-    
+
+// Mantendo os outros logs originais
+exports.sayLog = (message) => console.log("\x1b[36m[JARVIS | TALK]\x1b[0m", message);
+exports.inputLog = (message) => console.log("\x1b[30m[JARVIS | INPUT]\x1b[0m", message);
+exports.infoLog = (message) => console.log("\x1b[34m[JARVIS | INFO]\x1b[0m", message);
+exports.successLog = (message) => console.log("\x1b[32m[JARVIS | SUCCESS]\x1b[0m", message);
+exports.errorLog = (message) => console.log("\x1b[31m[JARVIS | ERROR]\x1b[0m", message);
+exports.warningLog = (message) => console.log("\x1b[33m[JARVIS | WARNING]\x1b[0m", message);
