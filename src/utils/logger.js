@@ -1,29 +1,33 @@
 /**
- * Logs - Premium Styled Banner
+ * Logs - Premium Styled Banner (Versão Corrigida)
  */
 const { version } = require("../../package.json");
 const readline = require('readline');
 const os = require('os');
-const gradient = require('gradient-string');
 
-// Configuração de cores premium
+// Configuração de cores alternativa (sem gradient-string)
 const colors = {
   reset: '\x1b[0m',
-  gold: gradient('#FFD700', '#D4AF37'),
-  silver: gradient('#C0C0C0', '#A8A8A8'),
-  darkBlue: gradient('#00008B', '#1E90FF'),
-  cyberBlue: gradient('#00FFFF', '#0080FF'),
-  matrixGreen: gradient('#00FF00', '#00CC00'),
-  royalPurple: gradient('#9370DB', '#8A2BE2'),
-  fireRed: gradient('#FF4500', '#FF0000')
+  gold: '\x1b[38;2;255;215;0m',       // #FFD700
+  silver: '\x1b[38;2;192;192;192m',   // #C0C0C0
+  darkBlue: '\x1b[38;2;0;0;139m',     // #00008B
+  cyberBlue: '\x1b[38;2;0;255;255m',  // #00FFFF
+  matrixGreen: '\x1b[38;2;0;255;0m',  // #00FF00
+  royalPurple: '\x1b[38;2;147;112;219m', // #9370DB
+  fireRed: '\x1b[38;2;255;69;0m'      // #FF4500
 };
 
-// Limpar terminal de forma mais eficiente
+// Função para simular gradiente (fallback)
+const gradientFallback = (text, color) => {
+  return `${color}${text}${colors.reset}`;
+};
+
+// Limpar terminal
 function clearTerminal() {
   process.stdout.write('\x1Bc');
 }
 
-// Configurar limpeza automática a cada 10 minutos
+// Configurar limpeza automática
 let cleanupInterval;
 function setupAutoClean() {
   cleanupInterval = setInterval(() => {
@@ -32,7 +36,7 @@ function setupAutoClean() {
   }, 10 * 60 * 1000);
 }
 
-// Formatadores premium
+// Formatadores
 const formatDate = (date) => {
   return [
     date.getDate().toString().padStart(2, '0'),
@@ -54,15 +58,12 @@ const getMemoryUsage = () => {
   return { total, free };
 };
 
-// Função para criar bordas decoradas
-const createBorder = (length, style = 'double') => {
-  const chars = {
-    double: { left: '╠', right: '╣', line: '═' },
-    single: { left: '╟', right: '╢', line: '─' },
-    star: { left: '✦', right: '✦', line: '✧' }
-  };
-  const { left, right, line } = chars[style] || chars.double;
-  return left + line.repeat(length - 2) + right;
+// Bordas decoradas
+const createBorder = (text, color, length = 58) => {
+  const padLength = Math.max(0, length - text.length - 4);
+  const padLeft = Math.floor(padLength / 2);
+  const padRight = Math.ceil(padLength / 2);
+  return `${color}║ ${' '.repeat(padLeft)}${text}${' '.repeat(padRight)} ║${colors.reset}`;
 };
 
 exports.bannerLog = () => {
@@ -73,33 +74,22 @@ exports.bannerLog = () => {
   const { total, free } = getMemoryUsage();
   const cpuCount = os.cpus().length;
 
-  // Banner com design premium
-  console.log(colors.darkBlue('╔══════════════════════════════════════════════════════════╗'));
-  console.log(colors.darkBlue('║') + colors.gold('                  █▀▀ █░█ █▀▀ █▀█ █ █▀▀ █▀▀                  ') + colors.darkBlue('║'));
-  console.log(colors.darkBlue('║') + colors.silver('                  █▄▄ █▀█ ██▄ █▀▄ █ █▄█ ██▄                  ') + colors.darkBlue('║'));
-  console.log(colors.darkBlue('╠══════════════════════════════════════════════════════════╣'));
+  // Banner estilizado
+  console.log(colors.darkBlue + '╔══════════════════════════════════════════════════════════╗' + colors.reset);
+  console.log(createBorder('█▀▀ █░█ █▀▀ █▀█ █ █▀▀ █▀▀', colors.gold));
+  console.log(createBorder('█▄▄ █▀█ ██▄ █▀▄ █ █▄█ ██▄', colors.silver));
+  console.log(colors.darkBlue + '╠══════════════════════════════════════════════════════════╣' + colors.reset);
   
-  // Informações do sistema com gradientes
-  console.log(colors.darkBlue('║ ') + colors.cyberBlue(`📅 ${formatDate(now)}`) + 
-            colors.darkBlue(' ┊ ') + colors.matrixGreen(`⏱️ ${now.toLocaleTimeString()}`) + 
-            colors.darkBlue(' ┊ ') + colors.royalPurple(`🔄 ${getUptime()}`) + 
-            colors.darkBlue(' ║'));
-
-  console.log(colors.darkBlue('║ ') + colors.fireRed(`💻 ${os.type()} ${os.release()}`) + 
-            colors.darkBlue(' ┊ ') + colors.gold(`🧠 ${free}GB/${total}GB`) + 
-            colors.darkBlue(' ┊ ') + colors.silver(`⚡ ${cpuCount} Cores`) + 
-            colors.darkBlue(' ║'));
-
-  console.log(colors.darkBlue('║ ') + colors.royalPurple(`📞 +55 24 98132-1901`) + 
-            colors.darkBlue(' ┊ ') + colors.cyberBlue(`👨‍💻 dn`) + 
-            colors.darkBlue(' ┊ ') + colors.matrixGreen(`🚀 v${version}`) + 
-            colors.darkBlue(' ║'));
-
-  console.log(colors.darkBlue('╚══════════════════════════════════════════════════════════╝'));
-  console.log(colors.silver(createBorder(58, 'star')));
+  // Informações do sistema
+  console.log(createBorder(`📅 ${formatDate(now)}  ⏱️ ${now.toLocaleTimeString()}  🔄 ${getUptime()}`, colors.cyberBlue));
+  console.log(createBorder(`💻 ${os.type()} ${os.release()}  🧠 ${free}GB/${total}GB  ⚡ ${cpuCount} Cores`, colors.fireRed));
+  console.log(createBorder(`📞 +55 24 98132-1901  👨‍💻 dn  🚀 v${version}`, colors.royalPurple));
+  
+  console.log(colors.darkBlue + '╚══════════════════════════════════════════════════════════╝' + colors.reset);
+  console.log(gradientFallback('✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦✧✦', colors.silver));
 };
 
-// Mantendo os outros logs originais
+// Mantendo os outros logs
 exports.sayLog = (message) => console.log("\x1b[36m[JARVIS | TALK]\x1b[0m", message);
 exports.inputLog = (message) => console.log("\x1b[30m[JARVIS | INPUT]\x1b[0m", message);
 exports.infoLog = (message) => console.log("\x1b[34m[JARVIS | INFO]\x1b[0m", message);
