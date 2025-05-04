@@ -48,14 +48,14 @@ exports.bannerLog = () => {
   };
 
   // Seu banner original com símbolos - MODIFICADO PARA ENCAIXAR MELHOR
-  console.log(`${red}╭────────────────────────────────────────────────╮${reset}`);
-  console.log(`${red}│                                                │${reset}`);
-  console.log(`${red}│${blue} ░▀█▀░█▀▀█░█▀▀▄░█░░░█░▀░█▀▀░░░░█▀▀▄░█▀▀█░▀▀█▀▀░ ${red}│${reset}`);
-  console.log(`${red}│${blue} ░░█░░█░░█░█▄▄▀░█░░░█░█░█▄░░░░░█▄▄▀░█░░█░░░█░░░ ${red}│${reset}`);
-  console.log(`${red}│${blue} █░█░░█▀▀█░█▀▄░░░█░█░░█░░▀█░░░░█▀▀▄░█░░█░░░█░░░ ${red}│${reset}`);
-  console.log(`${red}│${blue} ▀█▀░░█░░█░█░░█░░░█░░░█░▄▄█░░░░█▄▄▀░█▄▄█░░░█░░░ ${red}│${reset}`);
-  console.log(`${red}│                                                │${reset}`);
-  console.log(`${red}╰────────────────────────────────────────────────╯${reset}`);
+  console.log(`${gold}╭────────────────────────────────────────────────╮${reset}`);
+  console.log(`${gold}│                                                │${reset}`);
+  console.log(`${gold}│${blue} ░▀█▀░█▀▀█░█▀▀▄░█░░░█░▀░█▀▀░░░░█▀▀▄░█▀▀█░▀▀█▀▀░ ${gold}│${reset}`);
+  console.log(`${gold}│${blue} ░░█░░█░░█░█▄▄▀░█░░░█░█░█▄░░░░░█▄▄▀░█░░█░░░█░░░ ${gold}│${reset}`);
+  console.log(`${gold}│${blue} █░█░░█▀▀█░█▀▄░░░█░█░░█░░▀█░░░░█▀▀▄░█░░█░░░█░░░ ${gold}│${reset}`);
+  console.log(`${gold}│${blue} ▀█▀░░█░░█░█░░█░░░█░░░█░▄▄█░░░░█▄▄▀░█▄▄█░░░█░░░ ${gold}│${reset}`);
+  console.log(`${gold}│                                                │${reset}`);
+  console.log(`${gold}╰────────────────────────────────────────────────╯${reset}`);
   
   // Informações com bordas alinhadas
   console.log(`${blue}┌────────────────────────────────────────────────┐${reset}`);
