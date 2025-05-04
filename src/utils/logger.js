@@ -50,10 +50,10 @@ exports.bannerLog = () => {
   // Seu banner original com símbolos - MODIFICADO PARA ENCAIXAR MELHOR
   console.log(`${gold}╭────────────────────────────────────────────────╮${reset}`);
   console.log(`${gold}│                                                │${reset}`);
-  console.log(`${gold}│${blue} ░▀█▀░█▀▀█░█▀▀▄░█░░░█░▀░█▀▀░░░░█▀▀▄░█▀▀█░▀▀█▀▀░ ${gold}│${reset}`);
-  console.log(`${gold}│${blue} ░░█░░█░░█░█▄▄▀░█░░░█░█░█▄░░░░░█▄▄▀░█░░█░░░█░░░ ${gold}│${reset}`);
-  console.log(`${gold}│${blue} █░█░░█▀▀█░█▀▄░░░█░█░░█░░▀█░░░░█▀▀▄░█░░█░░░█░░░ ${gold}│${reset}`);
-  console.log(`${gold}│${blue} ▀█▀░░█░░█░█░░█░░░█░░░█░▄▄█░░░░█▄▄▀░█▄▄█░░░█░░░ ${gold}│${reset}`);
+  console.log(`${gold}│${silver} ░▀█▀░█▀▀█░█▀▀▄░█░░░█░▀░█▀▀░░░░█▀▀▄░█▀▀█░▀▀█▀▀░ ${gold}│${reset}`);
+  console.log(`${gold}│${silver} ░░█░░█░░█░█▄▄▀░█░░░█░█░█▄░░░░░█▄▄▀░█░░█░░░█░░░ ${gold}│${reset}`);
+  console.log(`${gold}│${silver} █░█░░█▀▀█░█▀▄░░░█░█░░█░░▀█░░░░█▀▀▄░█░░█░░░█░░░ ${gold}│${reset}`);
+  console.log(`${gold}│${silver} ▀█▀░░█░░█░█░░█░░░█░░░█░▄▄█░░░░█▄▄▀░█▄▄█░░░█░░░ ${gold}│${reset}`);
   console.log(`${gold}│                                                │${reset}`);
   console.log(`${gold}╰────────────────────────────────────────────────╯${reset}`);
   
