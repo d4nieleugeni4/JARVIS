@@ -11,59 +11,59 @@ exports.menuMessage = () => {
 
 ┏━━⫸ ✮BEM VINDO!✮ ⫷━━┓
 ┃                       
-┃➤ ******              
-┃➤ Data: **/**/**              
-┃➤ Hora: **/**/**              
-┃➤ Prefixo: .           
+┃➤ ${NOME_DO_BOT}              
+┃➤ Data: ${date.toLocaleDateString("pt-br")}               
+┃➤ Hora: ${date.toLocaleTimeString("pt-br")}              
+┃➤ Prefixo:  ${PREFIX}           
 ┃                       
 ┗━━━━━「🪐」━━━━━┛
 
 ┏━━⫸ ★DONO (DN)★ ⫷━━┓
 ┃                      
-┃➤ .off               
-┃➤ .on                
+┃➤  ${PREFIX}off               
+┃➤  ${PREFIX}on                
 ┃                      
 ┗━━━━━「🌌」━━━━━┛
 
 ┏━━⫸ ✮ADMINS✮ ⫷━━┓
 ┃                      
-┃➤ .anti-link (on/off/status)    
-┃➤ .auto-responder (1/0)
-┃➤ .ban                
-┃➤ .hidetag            
-┃➤ .welcome (1/0)
-┃➤ .add
-┃➤ .antilink (on/off/status)
-┃➤ .antipalavrao (on/off/status)
-┃➤ .antiaudio (on/off/status) 
-┃➤ .antimedia (on/off/status)
-┃➤ .antisticker (on/off/status)
-┃➤ .blacklist (limp/list)
-┃➤ .delete
-┃➤ .nomegp 
-┃➤ .chat adm (on/off)
-┃➤ .promover
-┃➤ .rebaixar
+┃➤  ${PREFIX}anti-link (on/off/status)    
+┃➤  ${PREFIX}auto-responder (1/0)
+┃➤  ${PREFIX}ban                
+┃➤  ${PREFIX}hidetag            
+┃➤  ${PREFIX}welcome (1/0)
+┃➤  ${PREFIX}add
+┃➤  ${PREFIX}antilink (on/off/status)
+┃➤  ${PREFIX}antipalavrao (on/off/status)
+┃➤  ${PREFIX}antiaudio (on/off/status) 
+┃➤  ${PREFIX}antimedia (on/off/status)
+┃➤  ${PREFIX}antisticker (on/off/status)
+┃➤  ${PREFIX}blacklist (limp/list)
+┃➤  ${PREFIX}delete
+┃➤  ${PREFIX}nomegp 
+┃➤  ${PREFIX}chat adm (on/off)
+┃➤  ${PREFIX}promover
+┃➤  ${PREFIX}rebaixar
 ┃                      
 ┗━━━━━「⭐」━━━━━┛
 
 ┏━━⫸ ✮MENU✮ ⫷━━┓
 ┃                        
-┃➤ .attp       
-┃➤ .cep         
-┃➤ .gpt-4       
-┃➤ .ia-sticker  
-┃➤ .image       
-┃➤ .ping        
-┃➤ .play-audio  
-┃➤ .play-video  
-┃➤ .sticker     
-┃➤ .to-image
-┃➤ .cc
-┃➤ .ppt
-┃➤ .roleta
-┃➤ .gpinfo
-┃➤ .ttk
+┃➤  ${PREFIX}attp       
+┃➤  ${PREFIX}cep         
+┃➤  ${PREFIX}gpt-4       
+┃➤  ${PREFIX}ia-sticker  
+┃➤  ${PREFIX}image       
+┃➤  ${PREFIX}ping        
+┃➤  ${PREFIX}play-audio  
+┃➤  ${PREFIX}play-video  
+┃➤  ${PREFIX}sticker     
+┃➤  ${PREFIX}to-image
+┃➤  ${PREFIX}cc
+┃➤  ${PREFIX}ppt
+┃➤  ${PREFIX}roleta
+┃➤  ${PREFIX}gpinfo
+┃➤  ${PREFIX}ttk
 ┃                 
 ┗━━━━━「🚀」━━━━━┛`;
 };
