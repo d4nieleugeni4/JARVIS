@@ -63,6 +63,7 @@ exports.menuMessage = () => {
 ┃➤ .ppt
 ┃➤ .roleta
 ┃➤ .gpinfo
+┃➤ .ttk
 ┃                 
 ┗━━━━━「🚀」━━━━━┛`;
 };
