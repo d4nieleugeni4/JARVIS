@@ -11,9 +11,9 @@ exports.menuMessage = () => {
 
 ┏━━⫸ ✮BEM VINDO!✮ ⫷━━┓
 ┃                       
-┃➤ Xandão              
-┃➤ Data: 03/05/2025              
-┃➤ Hora: 23:00:55              
+┃➤ ******              
+┃➤ Data: **/**/**              
+┃➤ Hora: **/**/**              
 ┃➤ Prefixo: .           
 ┃                       
 ┗━━━━━「🪐」━━━━━┛
@@ -40,8 +40,8 @@ exports.menuMessage = () => {
 ┃➤ .antisticker (on/off/status)
 ┃➤ .blacklist (limp/list)
 ┃➤ .delete
-┃➤ .nomegp
-┃➤ .onlyadms
+┃➤ .nomegp 
+┃➤ .chat adm (on/off)
 ┃➤ .promover
 ┃➤ .rebaixar
 ┃                      
