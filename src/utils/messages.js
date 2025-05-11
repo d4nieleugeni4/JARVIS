@@ -11,7 +11,7 @@ exports.menuMessage = () => {
 
 ┏━━⫸ ✮BEM VINDO!✮ ⫷━━┓
 ┃                       
-┃➤ ${NOME_DO_BOT}              
+┃➤ ${BOT_NAME}              
 ┃➤ Data: ${date.toLocaleDateString("pt-br")}               
 ┃➤ Hora: ${date.toLocaleTimeString("pt-br")}              
 ┃➤ Prefixo:  ${PREFIX}           
