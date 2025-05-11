@@ -110,3 +110,21 @@ exports.stableDiffusion = async (description) => {
 
   return data;
 };
+
+exports.download = async (service, url) => {
+  if (!url) {
+    throw new Error("Você precisa informar a URL!");
+  }
+
+  if (!SPIDER_API_TOKEN || SPIDER_API_TOKEN === "seu_token_aqui") {
+    throw new Error("Token da API do Spider X não configurado");
+  }
+
+  const { data } = await axios.get(
+    `${SPIDER_API_BASE_URL}/downloads/${service}?url=${encodeURIComponent(
+      url
+    )}&api_key=${SPIDER_API_TOKEN}`
+  );
+
+  return data;
+};
