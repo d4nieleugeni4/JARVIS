@@ -1,8 +1,4 @@
-/**
- * Mensagens do bot
- *
- * @author Dev Gui
- */
+
 const { BOT_NAME, PREFIX } = require("../config");
 
 exports.waitMessage = "Carregando dados...";
@@ -10,44 +6,63 @@ exports.waitMessage = "Carregando dados...";
 exports.menuMessage = () => {
   const date = new Date();
 
-  return `┏━━⫸ ✮BEM VINDO!✮ ⫷━━┓
+  return `
+👾 
+
+┏━━⫸ ✮BEM VINDO!✮ ⫷━━┓
 ┃                       
-┃➤ ${BOT_NAME}              
-┃➤ Data: ${date.toLocaleDateString("pt-br")}              
-┃➤ Hora: ${date.toLocaleTimeString("pt-br")}              
-┃➤ Prefixo: ${PREFIX}           
+┃➤ Xandão              
+┃➤ Data: 03/05/2025              
+┃➤ Hora: 23:00:55              
+┃➤ Prefixo: .           
 ┃                       
 ┗━━━━━「🪐」━━━━━┛
 
 ┏━━⫸ ★DONO (DN)★ ⫷━━┓
 ┃                      
-┃➤ ${PREFIX}off               
-┃➤ ${PREFIX}on                
+┃➤ .off               
+┃➤ .on                
 ┃                      
 ┗━━━━━「🌌」━━━━━┛
 
 ┏━━⫸ ✮ADMINS✮ ⫷━━┓
 ┃                      
-┃➤ ${PREFIX}anti-link (1/0)    
-┃➤ ${PREFIX}auto-responder (1/0)┃
-┃➤ ${PREFIX}ban                
-┃➤ ${PREFIX}hidetag            
-┃➤ ${PREFIX}welcome (1/0)      
+┃➤ .anti-link (on/off/status)    
+┃➤ .auto-responder (1/0)
+┃➤ .ban                
+┃➤ .hidetag            
+┃➤ .welcome (1/0)
+┃➤ .add
+┃➤ .antilink (on/off/status)
+┃➤ .antipalavrao (on/off/status)
+┃➤ .antiaudio (on/off/status) 
+┃➤ .antimedia (on/off/status)
+┃➤ .antisticker (on/off/status)
+┃➤ .blacklist (limp/list)
+┃➤ .delete
+┃➤ .nomegp
+┃➤ .onlyadms
+┃➤ .promover
+┃➤ .rebaixar
 ┃                      
 ┗━━━━━「⭐」━━━━━┛
 
 ┏━━⫸ ✮MENU✮ ⫷━━┓
 ┃                        
-┃➤ ${PREFIX}attp       
-┃➤ ${PREFIX}cep         
-┃➤ ${PREFIX}gpt-4       
-┃➤ ${PREFIX}ia-sticker  
-┃➤ ${PREFIX}image       
-┃➤ ${PREFIX}ping        
-┃➤ ${PREFIX}play-audio  
-┃➤ ${PREFIX}play-video  
-┃➤ ${PREFIX}sticker     
-┃➤ ${PREFIX}to-image    
+┃➤ .attp       
+┃➤ .cep         
+┃➤ .gpt-4       
+┃➤ .ia-sticker  
+┃➤ .image       
+┃➤ .ping        
+┃➤ .play-audio  
+┃➤ .play-video  
+┃➤ .sticker     
+┃➤ .to-image
+┃➤ .cc
+┃➤ .ppt
+┃➤ .roleta
+┃➤ .gpinfo
 ┃                 
 ┗━━━━━「🚀」━━━━━┛`;
 };
