@@ -1,43 +1,47 @@
 const { PREFIX } = require(`${BASE_DIR}/config`);
-const {
-  InvalidParameterError,
-} = require(`${BASE_DIR}/errors/InvalidParameterError`);
-const {
-  activateAntiLinkGroup,
-  deactivateAntiLinkGroup,
-} = require(`${BASE_DIR}/utils/database`);
+const { errorLog, successLog } = require(`${BASE_DIR}/utils/logger`);
 
 module.exports = {
   name: "anti-link",
-  description: "Ativo/desativo o recurso de anti-link no grupo.",
-  commands: ["anti-link"],
-  usage: `${PREFIX}anti-link (1/0)`,
-  handle: async ({ args, sendReply, sendSuccessReact, remoteJid }) => {
-    if (!args.length) {
-      throw new InvalidParameterError(
-        "Você precisa digitar 1 ou 0 (ligar ou desligar)!"
-      );
+  description: "Deleta mensagens com links e avisa o remetente",
+  commands: ["antilink"],
+  usage: `${PREFIX}antilink [on/off/status]`,
+  handle: async ({ args, remoteJid, sendReply }) => {
+    const action = args[0]?.toLowerCase();
+
+    // Comando de status
+    if (action === 'status') {
+      const status = global.ANTI_LINK_GROUPS?.has(remoteJid) ? 'ON ✅' : 'OFF ❌';
+      return await sendReply(`Status do anti-link: ${status}`);
     }
 
-    const antiLinkOn = args[0] === "1";
-    const antiLinkOff = args[0] === "0";
-
-    if (!antiLinkOn && !antiLinkOff) {
-      throw new InvalidParameterError(
-        "Você precisa digitar 1 ou 0 (ligar ou desligar)!"
-      );
+    // Ativação
+    if (action === 'on') {
+      if (global.ANTI_LINK_GROUPS?.has(remoteJid)) {
+        return await sendReply('⚠️ O anti-link já está ativado neste grupo!');
+      }
+      global.ANTI_LINK_GROUPS.add(remoteJid);
+      successLog(`Anti-link ativado no grupo: ${remoteJid}`);
+      return await sendReply('✅ Anti-link ATIVADO! Agora vou apagar:\n• Links (http/https)\n• Sites (www)\n• URLs encurtadas');
     }
 
-    if (antiLinkOn) {
-      activateAntiLinkGroup(remoteJid);
-    } else {
-      deactivateAntiLinkGroup(remoteJid);
+    // Desativação
+    if (action === 'off') {
+      if (!global.ANTI_LINK_GROUPS?.has(remoteJid)) {
+        return await sendReply('⚠️ O anti-link já está desativado neste grupo!');
+      }
+      global.ANTI_LINK_GROUPS.delete(remoteJid);
+      successLog(`Anti-link desativado no grupo: ${remoteJid}`);
+      return await sendReply('❌ Anti-link DESATIVADO');
     }
 
-    await sendSuccessReact();
-
-    const context = antiLinkOn ? "ativado" : "desativado";
-
-    await sendReply(`Recurso de anti-link ${context} com sucesso!`);
-  },
+    // Ajuda
+    return await sendReply(
+      `🔧 Como usar:\n` +
+      `${PREFIX}antilink on - Ativa a proteção\n` +
+      `${PREFIX}antilink off - Desativa\n` +
+      `${PREFIX}antilink status - Verifica o estado atual\n\n` +
+      `⚠️ Requer: Permissões de administrador`
+    );
+  }
 };
